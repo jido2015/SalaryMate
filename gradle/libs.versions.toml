@@ -10,6 +10,8 @@ activityCompose = "1.9.1"
 composeBom = "2024.08.00"
 appcompat = "1.7.0"
 material = "1.12.0"
+core-library8 = "2.1.1"
+compiler = "1.5.15"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -28,6 +30,14 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-compose-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
+
+androidx-lifecycle-viewmodel-savedstate-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "lifecycleRuntimeKtx" }
+
+core-library8 = {group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "core-library8"}
+androidx-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "compiler" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -67,4 +67,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    coreLibraryDesugaring (libs.core.library8)
+    implementation(libs.androidx.compiler)
+    implementation (project(":feature_salary_calculation"))
 }
