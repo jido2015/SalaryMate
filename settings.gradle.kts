@@ -21,8 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "SalaryMate"
 include(":app")
-include(":core")
-include(":feature_authentication")
 include(":feature_salary_calculation")
-include(":network")
-include(":data")
+
