@@ -12,10 +12,9 @@ class CalculateSalaryUseCase {
     fun execute(
         hourlyRate: Double,
         yearlySalary: Double,
-        includeHolidays: Boolean,
-        timeOffWeeks: Double
+        includeHolidays: Boolean
     ):SalaryResult  {
-        val salaryCalculator = SalaryCalculator(hourlyRate, yearlySalary, includeHolidays, timeOffWeeks)
+        val salaryCalculator = SalaryCalculator(hourlyRate, yearlySalary, includeHolidays)
         return SalaryResult(
             hourlyRate = salaryCalculator.calculateHourlyRate(),
             yearlyRate = salaryCalculator.calculateYearlyRate(),

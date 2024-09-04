@@ -18,22 +18,20 @@ class SalaryCalculator(
     private val hourlyRate: Double,
     private val yearlySalary: Double,
     private val includeHolidays: Boolean,
-    private val timeOffWeeks: Double
 
 ) {
     fun calculateHourlyRate(): Double {
         val weeksPerYear = if (includeHolidays) 52.0 else 50.0
-        val effectiveWeeks = weeksPerYear - timeOffWeeks
-        return if (yearlySalary >  0) yearlySalary / (40 * effectiveWeeks) else hourlyRate
+        return if (yearlySalary >  0) yearlySalary / (40 * weeksPerYear) else hourlyRate
     }
 
     fun calculateYearlyRate(): Double {
         val weeksPerYear = if (includeHolidays) 52.0 else 50.0
-        val effectiveWeeks = weeksPerYear - timeOffWeeks
-        return if (hourlyRate > 0) hourlyRate * 40 * effectiveWeeks else yearlySalary
+        return if (hourlyRate > 0) hourlyRate * 40 * weeksPerYear else yearlySalary
     }
 
     fun calculateMonthlyRate(): Double {
         return calculateYearlyRate() / 12
     }
+
 }

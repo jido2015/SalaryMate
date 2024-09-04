@@ -24,17 +24,15 @@ fun CalculatorScreen(salaryViewModel: SalaryViewModel = viewModel()) {
     var salaryInput by remember { mutableStateOf("") }
     var isHourly by remember { mutableStateOf(true) }
     var includeHolidays by remember { mutableStateOf(true) }
-    var timeOffWeeksInput by remember { mutableStateOf("") }
 
     val decimalFormat = DecimalFormat("#,##0.00")
 
     val salary = salaryInput.toDoubleOrNull() ?: 0.0
-    val timeOffWeeks = timeOffWeeksInput.toDoubleOrNull() ?: 0.0
 
     val salaryResult = if (isHourly) {
-        salaryViewModel.calculateSalary(salary, 0.0, includeHolidays, timeOffWeeks)
+        salaryViewModel.calculateSalary(salary, 0.0, includeHolidays)
     } else {
-        salaryViewModel.calculateSalary(0.0, salary, includeHolidays, timeOffWeeks)
+        salaryViewModel.calculateSalary(0.0, salary, includeHolidays)
     }
 
     Scaffold(
@@ -51,8 +49,11 @@ fun CalculatorScreen(salaryViewModel: SalaryViewModel = viewModel()) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TextField(
-                value = salaryInput,
-                onValueChange = { salaryInput = it },
+                value = salaryViewModel.formatInput(salaryInput),
+                onValueChange = {
+                    salaryInput = it.replace(",","") // Format and update the raw input
+
+                },
                 label = { Text("Enter Salary") },
                 modifier = Modifier.fillMaxWidth()
             )
@@ -75,13 +76,6 @@ fun CalculatorScreen(salaryViewModel: SalaryViewModel = viewModel()) {
             Text("Include Holidays")
 
             Spacer(modifier = Modifier.height(16.dp))
-
-            TextField(
-                value = timeOffWeeksInput,
-                onValueChange = { timeOffWeeksInput = it },
-                label = { Text("Time Off (weeks)") },
-                modifier = Modifier.fillMaxWidth()
-            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
